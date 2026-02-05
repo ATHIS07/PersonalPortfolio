@@ -629,68 +629,104 @@
             font-size: 0.8rem;
         }
 
-        /* Goals Section */
-        .goals {
+        /* Hands-On AWS Skills Section */
+        .aws-skills {
             background-color: var(--dark);
         }
 
-        .goals-table-container {
-            overflow-x: auto;
-            margin-top: 30px;
+        .aws-skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            padding: 30px;
             border-radius: var(--border-radius);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--dark-gray);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        th, td {
-            padding: 20px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        th {
-            background: rgba(0, 0, 0, 0.3);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary);
-        }
-
-        tr {
-            transition: var(--transition-fast);
-        }
-
-        tr:hover {
-            background: rgba(0, 212, 255, 0.05);
-        }
-
-        .current {
-            font-weight: 700;
-            color: var(--primary);
+            transition: var(--transition-slow);
             position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .current::after {
+        .skill-card::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            top: 0;
+            left: -100%;
             width: 100%;
-            height: 2px;
-            background: var(--primary);
-            transform: scaleX(0);
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: var(--transition-slow);
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .skill-card h3 i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .skill-features {
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .skill-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .skill-feature i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 3px;
+            font-size: 0.8rem;
+        }
+
+        .skill-links {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: var(--transition-fast);
         }
 
-        tr:hover .current::after {
-            transform: scaleX(1);
+        .skill-link:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-3px);
         }
 
         /* Footer */
@@ -923,6 +959,10 @@
                 width: 280px;
                 height: 280px;
             }
+            
+            .aws-skills-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -960,6 +1000,15 @@
             .projects-container, .skills-container {
                 grid-template-columns: 1fr;
             }
+            
+            .skill-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .skill-link {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -979,7 +1028,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#goals">Goals</a></li>
+                    <li><a href="#aws-skills">AWS Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -1186,81 +1235,107 @@
         </div>
     </section>
 
-    <!-- Goals Section -->
-    <section id="goals" class="goals">
+    <!-- Hands-On AWS Skills Section -->
+    <section id="aws-skills" class="aws-skills">
         <div class="container">
             <div class="section-title">
-                <h2>12-Month Growth Targets</h2>
+                <h2>Hands-On AWS Skills (With Proof)</h2>
             </div>
             
-            <div class="goals-table-container fade-in">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Metric</th>
-                            <th>Current</th>
-                            <th>3-Month</th>
-                            <th>6-Month</th>
-                            <th>12-Month</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>DSA Problems Solved</td>
-                            <td class="current">0</td>
-                            <td>75</td>
-                            <td>150</td>
-                            <td>300+</td>
-                        </tr>
-                        <tr>
-                            <td>AWS Projects</td>
-                            <td class="current">0</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3+</td>
-                        </tr>
-                        <tr>
-                            <td>LeetCode Rating</td>
-                            <td class="current">0</td>
-                            <td>--</td>
-                            <td>1000+</td>
-                            <td>1400+</td>
-                        </tr>
-                        <tr>
-                            <td>Certifications</td>
-                            <td class="current">0</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3+</td>
-                        </tr>
-                        <tr>
-                            <td>GitHub Contributions/Month</td>
-                            <td class="current">0</td>
-                            <td>15+</td>
-                            <td>20+</td>
-                            <td>25+</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="glass" style="padding: 30px; margin-top: 50px;">
-                <h3 style="text-align: center; margin-bottom: 25px;">Target Certifications</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                    <div style="padding: 20px; background: rgba(0, 212, 255, 0.05); border-radius: var(--border-radius); border-left: 4px solid var(--primary);">
-                        <h4 style="color: var(--primary); margin-bottom: 10px;">AWS Certified Cloud Practitioner</h4>
-                        <p style="color: var(--gray); margin-bottom: 5px; font-size: 0.9rem;">Status: <span style="color: var(--primary); font-weight: 600;">Ongoing</span></p>
-                        <p style="color: var(--light); font-size: 0.9rem;">Target: 2 Months</p>
+            <div class="aws-skills-container">
+                <div class="skill-card glass fade-in">
+                    <h3><i class="fas fa-server"></i> Amazon S3 + CloudFront</h3>
+                    <div class="skill-features">
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hosted static portfolio website using Amazon S3</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Configured CloudFront distribution for global CDN delivery</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Enabled HTTPS for secure content delivery</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Improved performance and availability for users</span>
+                        </div>
                     </div>
-                    <div style="padding: 20px; background: rgba(121, 40, 202, 0.05); border-radius: var(--border-radius); border-left: 4px solid var(--secondary);">
-                        <h4 style="color: var(--secondary); margin-bottom: 10px;">AWS Solutions Architect - Associate</h4>
-                        <p style="color: var(--gray); margin-bottom: 5px; font-size: 0.9rem;">Status: <span style="color: var(--secondary); font-weight: 600;">Planned</span></p>
-                        <p style="color: var(--light); font-size: 0.9rem;">After Cloud Practitioner</p>
+                    <div class="skill-links">
+                        <a href="https://d1li744frp3km4.cloudfront.net/index.html" target="_blank" class="skill-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/ATHIS07/PersonalPortfolio/blob/main/index.html" target="_blank" class="skill-link">
+                            <i class="fab fa-github"></i> GitHub Repo
+                        </a>
                     </div>
-                    <div style="padding: 20px; background: rgba(255, 0, 128, 0.05); border-radius: var(--border-radius); border-left: 4px solid var(--accent);">
-                        <h4 style="color: var(--accent); margin-bottom: 10px;">NPTEL Programming Courses</h4>
-                        <p style="color: var(--gray); margin-bottom: 5px; font-size: 0.9rem;">Status: <span style="color: var(--accent); font-weight: 600;">Planned</span></p>
-                        <p style="color: var(--light); font-size: 0.9rem;">Target: 12 Months</p>
+                </div>
+                
+                <div class="skill-card glass fade-in">
+                    <h3><i class="fas fa-user-shield"></i> IAM (Identity and Access Management)</h3>
+                    <div class="skill-features">
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Created IAM users with secure credential management</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Implemented IAM roles for service access control</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Applied least-privilege access principles</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Managed policies to securely control AWS resource access</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card glass fade-in">
+                    <h3><i class="fas fa-cloud"></i> EC2 + Linux</h3>
+                    <div class="skill-features">
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Launched and managed EC2 instances on AWS</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Connected to instances via SSH for remote management</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Performed basic Linux server configuration and maintenance</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Managed instance security groups and networking</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card glass fade-in">
+                    <h3><i class="fab fa-git-alt"></i> Git & GitHub</h3>
+                    <div class="skill-features">
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Used Git for version control across all projects</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Maintained repositories with proper change tracking</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Implemented branching strategies for development</span>
+                        </div>
+                        <div class="skill-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Managed code collaboration and documentation on GitHub</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1313,7 +1388,6 @@
             
             <div class="copyright">
                 <p>&copy; 2023 Athish M. All rights reserved.</p>
-                <p style="margin-top: 10px; font-size: 0.8rem;">Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Cloud & DevOps</p>
             </div>
         </div>
     </footer>
