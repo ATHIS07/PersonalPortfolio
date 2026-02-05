@@ -34,6 +34,3 @@ User → CloudFront → S3
 - Make the S3 bucket private and access it via CloudFront OAC
 - Add AWS WAF for security when budget allows
 - Automate deployment using GitHub Actions
-
-## Live Demo
-(https://d1li744frp3km4.cloudfront.net/index.html)
