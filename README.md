@@ -14,8 +14,7 @@ User → CloudFront → S3
 
 ## Features
 - Static website hosting using Amazon S3  
-- Faster content delivery using CloudFront CDN  
-- Custom error page (error.html) for better UX  
+- Faster content delivery using CloudFront CDN   
 - Cost-efficient setup without using WAF or paid services  
 
 ## Deployment Steps (High Level)
